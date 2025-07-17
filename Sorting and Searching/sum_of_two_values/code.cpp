@@ -10,18 +10,18 @@ int main() {
     cin.tie(nullptr);
     int n, x;
     cin >> n >> x;
-    vector<int> v(n), w(n);
+    vector<int> v(n), temp(n);
     for (int i = 0; i < n; i++) {
         cin >> v[i];
     }
-    w = v;
-    sort(v.begin(), v.end());
+    temp = v;
+    sort(temp.begin(), temp.end());
     int i = 0, j = n - 1, el1 = -1, el2 = -1;
     while (i < j) {
-        if (v[i] + v[j] == x) {
-            el1 = v[i], el2 = v[j];
+        if (temp[i] + temp[j] == x) {
+            el1 = temp[i], el2 = temp[j];
             break;
-        } else if (v[i] + v[j] > x) {
+        } else if (temp[i] + temp[j] > x) {
             j--;
         } else {
             i++;
@@ -30,9 +30,9 @@ int main() {
     if (el1 == -1 || el2 == -1) {
         cout << "IMPOSSIBLE";
     } else {
-        auto it1 = find(w.begin(), w.end(), el1);
-        auto it2 = find(w.rbegin(), w.rend(), el2);
-        int idx1 = (it1 - w.begin()) + 1, idx2 = n - distance(w.rbegin(), it2);
+        auto it1 = find(v.begin(), v.end(), el1);
+        auto it2 = find(v.rbegin(), v.rend(), el2);
+        int idx1 = (it1 - v.begin()) + 1, idx2 = n - distance(v.rbegin(), it2);
         if (idx1 > idx2) {
             swap(idx1, idx2);
         }
