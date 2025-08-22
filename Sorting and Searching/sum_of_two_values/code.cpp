@@ -5,38 +5,31 @@
 
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+void run_case() {
     int n, x;
     cin >> n >> x;
-    vector<int> v(n), temp(n);
+    vector<int> v(n);
     for (int i = 0; i < n; i++) {
         cin >> v[i];
     }
-    temp = v;
-    sort(temp.begin(), temp.end());
-    int i = 0, j = n - 1, el1 = -1, el2 = -1;
-    while (i < j) {
-        if (temp[i] + temp[j] == x) {
-            el1 = temp[i], el2 = temp[j];
-            break;
-        } else if (temp[i] + temp[j] > x) {
-            j--;
-        } else {
-            i++;
+    map<int, int> mp;
+    for (int i = 0; i < n; i++) {
+        if (mp.find(x - v[i]) != mp.end()) {
+            cout << mp[x - v[i]] << ' ' << i + 1;
+            return;
         }
+        mp[v[i]] = i + 1;
     }
-    if (el1 == -1 || el2 == -1) {
-        cout << "IMPOSSIBLE";
-    } else {
-        auto it1 = find(v.begin(), v.end(), el1);
-        auto it2 = find(v.rbegin(), v.rend(), el2);
-        int idx1 = (it1 - v.begin()) + 1, idx2 = n - distance(v.rbegin(), it2);
-        if (idx1 > idx2) {
-            swap(idx1, idx2);
-        }
-        cout << idx1 << " " << idx2;
-    }
+    cout << "IMPOSSIBLE";   
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    // int tests;
+    // cin >> tests;
+    // while (tests--) {
+        run_case();
+    // }
     return 0;
 }
