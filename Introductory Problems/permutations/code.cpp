@@ -1,32 +1,41 @@
-/**
- *   author: pranshumg
-**/
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+using i64 = int64_t;
+using u64 = uint64_t;
+using u32 = uint32_t;
+using i128 = __int128_t;
+using u128 = __uint128_t;
+
+#define all(x) (x).begin(), (x).end()
+
+void solve() {
     int n;
     cin >> n;
-    if (n > 3 || n == 1) {
-        vector<int> even, odd;
-        for (int i = 1; i <= n; i++) {
-            if (i % 2 == 0) {
-                even.emplace_back(i);
-            } else {
-                odd.emplace_back(i);
-            }
-        }
-        for (auto it: even) {
-            cout << it << " ";
-        }
-        for (auto it: odd) {
-            cout << it << " ";
-        }
-    } else {
-        cout << "NO SOLUTION";
+    if (n == 1) {
+        cout << n << '\n';
+        return;
+    }
+    if (n < 4) {
+        cout << "NO SOLUTION\n";
+        return;
+    }
+    for (int i = 2; i <= n; i += 2) {
+        cout << i << ' ';
+    }
+    for (int i = 1; i <= n; i += 2) {
+        cout << i << ' ';
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int t = 1;
+    // cin >> t;
+    while (t--) {
+        solve();
     }
     return 0;
 }
