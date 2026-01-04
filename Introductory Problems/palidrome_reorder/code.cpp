@@ -28,7 +28,7 @@ void solve() {
             ++o;
         } 
     }
-    if (((int)s.size() & 1 && (!o || o > 1)) || ((int)s.size() % 2 == 0 && o)) {
+    if (((int)s.size() & 1 && o != 1) || ((int)s.size() % 2 == 0 && o)) {
         cout << "NO SOLUTION\n";
         return;
     }
