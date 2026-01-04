@@ -1,47 +1,52 @@
-/**
- *   author: pranshumg
-**/
 #include <bits/stdc++.h>
 
 using namespace std;
 
-void run_case() {
+using i64 = int64_t;
+using u64 = uint64_t;
+using u32 = uint32_t;
+using i128 = __int128_t;
+using u128 = __uint128_t;
+
+#define all(x) (x).begin(), (x).end()
+
+void solve() {
     string s;
     cin >> s;
-    unordered_map<char, int> mp;
-    for (int i = 0; i < (int)s.size(); i++) {
-        mp[s[i]]++;
-    }    
-    int cnt = 0;
-    char c;
-    string ans = "";
-    for (auto it: mp) {
-        if (it.second % 2 != 0) {
-            cnt++, c = it.first;
-        }
-        for (int i = 0; i < it.second / 2; i++) {
-            ans += it.first;
-        }
-        if (((int)s.size() % 2 == 0 && cnt > 0) || ((int)s.size() % 2 != 0 && cnt > 1)) {
-            cout << "NO SOLUTION";
-            return;
-        }
+    map<char, int> mp;
+    for (auto &it : s) {
+        ++mp[it];
     }
-    cout << ans;
-    if (cnt != 0) {
+    string r = "", t = "";
+    int o = 0;
+    char c;
+    for (auto &it : mp) {
+        r += string(it.second >> 1, it.first);
+        t += string(it.second >> 1, it.first);
+        if (it.second & 1) {
+            c = it.first;
+            ++o;
+        } 
+    }
+    if (((int)s.size() & 1 && (!o || o > 1)) || ((int)s.size() % 2 == 0 && o)) {
+        cout << "NO SOLUTION\n";
+        return;
+    }
+    reverse(all(t));
+    cout << r;
+    if ((int)s.size() & 1) {
         cout << c;
     }
-    reverse(ans.begin(), ans.end());
-    cout << ans;
+    cout << t << '\n';
 }
 
 int main() {
-    ios::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
-    // int tests;
-    // cin >> tests;
-    // while (tests--) {
-        run_case();
-    // }
+    int t = 1;;
+    // cin >> t;
+    while (t--) {
+        solve();
+    }
     return 0;
 }
