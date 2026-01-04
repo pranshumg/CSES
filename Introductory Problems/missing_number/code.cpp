@@ -13,13 +13,14 @@ using u128 = __uint128_t;
 void solve() {
     i64 n;
     cin >> n;
-    i64 s1 = (n * (n + 1)) >> 1, s2 = 0;
+    i64 x = 0;
     for (int i = 0; i < n - 1; ++i) {
         int cur;
         cin >> cur;
-        s2 += cur;
+        x ^= cur ^ (i + 1);
     }
-    cout << s1 - s2 << '\n';
+    x ^= n;
+    cout << x << '\n';
 }
 
 int main() {
