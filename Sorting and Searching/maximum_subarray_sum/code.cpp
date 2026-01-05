@@ -1,19 +1,24 @@
-/**
- *   author: pranshumg
-**/
 #include <bits/stdc++.h>
 
 using namespace std;
 
-void run_case() {
+using i64 = int64_t;
+using u64 = uint64_t;
+using u32 = uint32_t;
+using i128 = __int128_t;
+using u128 = __uint128_t;
+
+#define all(x) (x).begin(), (x).end()
+
+void solve() {
     int n;
     cin >> n;
-    vector<int64_t> v(n);
-    for (int i = 0; i < n; i++) {
+    vector<i64> v(n);
+    for (int i = 0; i < n; ++i) {
         cin >> v[i];
     }
-    int64_t ans = v[0], sum = v[0];
-    for (int i = 1; i < n; i++) {
+    i64 ans = v[0], sum = v[0];
+    for (int i = 1; i < n; ++i) {
         if (sum + v[i] < v[i]) {
             sum = v[i];
         } else {
@@ -21,16 +26,16 @@ void run_case() {
         }
         ans = max(ans, sum);
     }
-    cout << ans;
+    cout << ans << '\n';
 }
 
 int main() {
-    ios::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
-    // int tests;
-    // cin >> tests;
-    // while (tests--) {
-        run_case();
-    // }
+    int t = 1;
+    // cin >> t;
+    while (t--) {
+        solve();
+    }
     return 0;
 }
