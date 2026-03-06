@@ -1,46 +1,29 @@
+//    Author:  Pranshu Gupta
 #include <bits/stdc++.h>
 
 using namespace std;
 
-using i64 = int64_t;
-using u64 = uint64_t;
-using u32 = uint32_t;
-using i128 = __int128_t;
-using u128 = __uint128_t;
-
-#define all(x) (x).begin(), (x).end()
-
-string dec_to_bin(int g, int n) {
-    string s = "";
-    while (g) {
-        s = to_string(g % 2) + s;
-        g >>= 1;
-    }
-    while ((int)s.size() < n) {
-        s = '0' + s;
-    }
-    return s;
-}
-
 int g(int n) {
-    return n ^ (n >> 1);
-}
-
-void solve() {
-    int n;
-    cin >> n;
-    for (int i = 0; i < (1 << n); ++i) {
-        cout << dec_to_bin(g(i), n) << '\n';
-    }
+  return n ^ (n >> 1);
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    int t = 1;
-    // cin >> t;
-    while (t--) {
-        solve();
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  auto bin = [](int g, int n) {
+    string res = "";
+    while (g) {
+      res += g % 2 ? '1' : '0';
+      g >>= 1;
     }
-    return 0;
+    reverse(res.begin(), res.end());
+    while (int(res.size()) < n) res = '0' + res;
+    return res;
+  };
+  int n;
+  cin >> n;
+  for (int i = 0; i < (1 << n); ++i) {
+    cout << bin(g(i), n) << '\n';
+  }
+  return 0;
 }
