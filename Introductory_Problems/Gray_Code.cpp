@@ -1,4 +1,3 @@
-//    author:  Pranshu Gupta
 #include <bits/stdc++.h>
  
 using namespace std;
@@ -10,7 +9,7 @@ int g(int n) {
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  auto bin = [](int g, int n) -> string {
+  auto Bin = [](int g, int n) -> string {
     string res = "";
     while (g) {
       res += g % 2 ? '1' : '0';
@@ -23,7 +22,7 @@ int main() {
   int n;
   cin >> n;
   for (int i = 0; i < (1 << n); ++i) {
-    cout << bin(g(i), n) << '\n';
+    cout << Bin(g(i), n) << '\n';
   }
   return 0;
 }
