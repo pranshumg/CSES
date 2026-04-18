@@ -3,16 +3,16 @@
 using namespace std;
  
 int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
-  int n;
-  cin >> n;
-  set<int> st;
-  for (int i = 0; i < n; ++i) {
-    int cur;
-    cin >> cur;
-    st.insert(cur);
-  }
-  cout << int(st.size()) << '\n';
-  return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int n;
+    cin >> n;
+    set<int> st;
+    for (int i = 0; i < n; ++i) {
+        int cur;
+        cin >> cur;
+        st.insert(cur);
+    }
+    cout << int(st.size()) << '\n';
+    return 0;
 }
