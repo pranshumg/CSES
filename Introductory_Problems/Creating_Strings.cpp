@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    string s;
+    cin >> s;
+    sort(s.begin(), s.end());
+    vector<string> res;
+    do {
+        res.push_back(s);
+    } while (next_permutation(s.begin(), s.end()));
+    cout << int(res.size()) << '\n';
+    for (auto& a : res) {
+        cout << a << '\n';
+    }
+    return 0;
+}

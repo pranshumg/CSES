@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+using i64 = int64_t;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int n, k;
+    cin >> n >> k;
+    int x, a, b, c;
+    cin >> x >> a >> b >> c;
+    vector<int> v(n);
+    v[0] = x;
+    for (int i = 1; i < n; i++) {
+        v[i] = (i64(a) * v[i - 1] + b) % c;
+    }
+    i64 ans = 0, sum = 0;
+    int l = 0;
+    for (int r = 0; r < n; r++) {
+        while (r - l + 1 > k) {
+            sum -= v[l++];
+        }
+        sum += v[r];
+        if (r - l + 1 == k) {
+            ans ^= sum;
+        }
+    }
+    cout << ans << '\n';
+    return 0;
+}
