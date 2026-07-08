@@ -17,11 +17,13 @@ int main() {
         i64 cnt = 0;
         for (auto& a : v) {
             cnt += mid / a;
+            if (cnt >= t) {
+                return true;
+            }
         }
-        return cnt >= t;
+        return false;
     };
-    int mn = *min_element(v.begin(), v.end());
-    i64 low = mn, high = i64(mn) * t;
+    i64 low = 1, high = i64(1e18);
     while (low <= high) {
         i64 mid = low + (high - low) / 2;
         if (check(mid)) {
