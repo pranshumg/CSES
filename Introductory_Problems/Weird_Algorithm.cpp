@@ -4,21 +4,22 @@ using namespace std;
 
 using i64 = int64_t;
 
-void solve(i64 n) {
-    if (n == 1) {
-        cout << 1 << ' ';
-        return;
-    }
-    cout << n << ' ';
-    if (n & 1) solve(n * 3 + 1);
-    else solve(n / 2);
-}
-
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int n;
+    i64 n;
     cin >> n;
-    solve(n);
+    auto solve = [&](auto&& self, i64 n) -> void {
+        cout << n << ' ';
+        if (n == 1) {
+            return;
+        }
+        if (n & 1) {
+            self(self, n * 3 + 1);
+        } else {
+            self(self, n / 2);
+        }
+    };
+    solve(solve, n);
     return 0;
 }
